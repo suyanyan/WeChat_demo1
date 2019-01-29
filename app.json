@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/home/index",
+    "pages/template/template"
+  ],
+  "window": {
+    "backgroundTextStyle": "",
+    "navigationBarBackgroundColor": "#eee",
+    "navigationBarTitleText": "Su_peng_peng",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "black",
+    "backgroundColorTop": "#eee"
+  }
+}

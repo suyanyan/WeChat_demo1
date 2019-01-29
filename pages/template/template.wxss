@@ -1,0 +1,39 @@
+/* 导航样式 */
+.nav{
+  width: 100%;
+  height:50px;
+  background: #fff;
+}
+.nav>.a{
+  width: 20%;
+  height: 100%;
+  float: left;
+  line-height:50px;
+  text-align:center;
+}
+.nav>.active{
+  border-bottom: 4px solid rgb(192, 28, 28);
+  box-sizing: border-box;
+}
+.a-hover{
+  color: blue;
+}
+/* car */
+.page-section-gap{
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+
+.page-body-button {
+  margin-bottom: 30rpx;
+}
+/* 我的样式 */
+.audio{
+  width: 100%;
+  margin-bottom: 20px;
+}
+.audio_play{
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}

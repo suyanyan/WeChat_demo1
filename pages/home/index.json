@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "my-component-dialog": "../../utils/component/wxPop/pop_modal"
+  }
+}

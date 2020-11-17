@@ -1,0 +1,168 @@
+<view class='account'>
+  <ul>
+    <li><text class='leftmsg'>头像</text><image class='userimg' src='{{userinfo.avatarUrl}}' bindtap='preveviweFn'></image></li>
+    <li><text class='leftmsg'>昵称</text><view class='textUser' bindtap='textUserClick' style='display:{{isfcous}}'>{{user}}</view><input style='width:50%' bindblur='inputblur' focus='{{focus}}' id="inputbox" value='{{user}}' type='text' style='display:{{disable}}'></input></li>
+    <li>
+      <text class='leftmsg'>性别</text>
+      <picker bindchange="bindViewEvent" data-model="component" bindchange="bindSelect" data-name="index"  value='{{index}}' range="{{gender}}">
+        <view class="label-right">
+          {{gender[index]}}
+        </view>
+      </picker>
+    </li>
+    <li><text class='leftmsg'>地区</text><text>{{userinfo.country}}-{{userinfo.province}}-{{userinfo.city}}</text></li>
+    <li><text class='leftmsg'>语言</text><text>{{userinfo.language}}</text></li>
+    <!-- <li>
+      <text>三级联动</text>
+      <picker mode='multiSelector' range='{{multiArray}}' value='{{multiIndex}}' bindchange='SelectorChange' bindcolumnchange='columnchange'>
+        <text>{{multiArray[0][multiIndex[0]]}}-</text>
+        <text>{{multiArray[1][multiIndex[1]]}}-</text>
+        <text>{{multiArray[2][multiIndex[2]]}}</text>
+      </picker>
+    </li> -->
+    <li>
+     <text class='leftmsg'>省市区选择</text>
+      <picker mode='region' bindchange="bindRegionChange" value="{{region}}">
+        <text>{{region[0]}}-</text>
+        <text>{{region[1]}}-</text>
+        <text>{{region[2]}}</text>
+      </picker>
+    </li>
+  </ul>
+</view>
+<view id='previewImage' wx:if="{{isshow}}">
+  <import src='../template/template'/>
+  <template is='previewImage' data='{{previewImageUrl:userinfo.avatarUrl}}'></template>
+   <view style='width:100%;height:40px;display:flex;justify-content: space-between;align-items: center;'>
+    <button type='primary' size='default' bindtap='uploads'>更换</button>
+    <button type='warn' size='default' bindtap='close'>关闭</button>
+  </view>
+</view>
+<!-- // 多列选择器_列变化监听
+  columnchange:function(e){
+    console.log(e)
+    var data = {
+      multiArray: this.data.multiArray,
+      multiIndex: this.data.multiIndex
+    };
+    /** 下标修改*/
+    data.multiIndex[e.detail.column] = e.detail.value
+    switch (e.detail.column){
+      // 第一列
+      case 0:
+        switch (data.multiIndex[0]){
+          case 0:
+            data.multiArray[1] = ['太原市', '大同市', '阳泉市', '长治市', '晋城市', '朔州市', '忻州市', '吕梁市', '晋中市', '临汾市','运城市'];
+            data.multiArray[2] = ["小店区","迎泽区","杏花岭区","尖草坪区","万柏林区","晋源区","清徐县","阳曲县","娄烦县","古交市"]
+            break;
+          case 1:
+            data.multiArray[1] = ["郑州市", "开封市", "洛阳市", "平顶山市", "安阳市", "鹤壁市", "新乡市", "焦作市", "濮阳市", "许昌市", "漯河市", "三门峡市", "南阳市", "商丘市", "信阳市", "周口市", "驻马店市", "省直辖县级行政区划"];
+            data.multiArray[2] = ["中原区", "金水区", "二七区", "管城回族区", "上街区", "惠济区", "巩义市", "新郑市", "新密市", "登封市", "荥阳市", "中牟县", "其他"]
+            break
+        }
+        data.multiIndex[1] = 0;
+        data.multiIndex[2] = 0;
+        break;
+      // 第二列
+      case 1:
+        switch (data.multiIndex[0]){
+          case 0:
+            switch (data.multiIndex[1]){
+              case 0:
+                data.multiArray[2] = ["小店区", "迎泽区", "杏花岭区", "尖草坪区", "万柏林区", "晋源区", "清徐县", "阳曲县", "娄烦县", "古交市"];
+                break;
+              case 1:
+                data.multiArray[2] = ["城  区","矿  区","南郊区","新荣区","阳高县","天镇县","广灵县","灵丘县","浑源县","左云县","大同县"]
+                break;
+              case 2:
+                data.multiArray[2] = ["城  区", "矿  区","郊  区","平定县","盂  县"]
+                break;
+              case 3:
+                data.multiArray[2] = ["城  区","郊  区","长治县","襄垣县","屯留县","平顺县","黎城县","壶关县","长子县","武乡县","沁  县","沁源县", "潞城市"]
+                break;
+              case 4:
+                data.multiArray[2] = ["城  区","沁水县","阳城县","陵川县","泽州县","高平市"]
+                break;
+              case 5:
+                data.multiArray[2] = ["朔城区","平鲁区","山阴县","应  县","右玉县","怀仁县"]
+                break;
+              case 6:
+                data.multiArray[2] = ["忻府区","原平市","定襄县","五台县","代  县","繁峙县","宁武县","静乐县","神池县","五寨县","岢岚县","河曲县","保德县","偏关县"]
+                break;
+              case 7:
+                data.multiArray[2] = ["离石区","孝义市","汾阳市","文水县","交城县","兴  县","临  县","柳林县","石楼县","岚  县","方山县","中阳县","交口县"]
+                break;
+              case 8:
+                data.multiArray[2] = ["榆次市","介休市","榆社县","左权县","和顺县","昔阳县","寿阳县","太谷县","祁  县","平遥县","灵石县"]
+                break;
+              case 9:
+                data.multiArray[2] = ["临汾市","侯马市","霍州市","曲沃县","翼城县","襄汾县","洪洞县","古  县","安泽县","浮山县","吉  县","乡宁县","蒲  县","大宁县","永和县","隰  县","汾西县"]
+                break;
+              case 10:
+                data.multiArray[2] = ["运城市","永济市","河津市", "芮城县", "临猗县","万荣县","新绛县","稷山县","闻喜县","夏  县","绛  县","平陆县","垣曲县"]
+                break;
+            }
+            break;
+          case 1:
+            switch (data.multiIndex[1]) {
+              case 0:
+                data.multiArray[2] = ["中原区", "金水区", "二七区", "管城回族区", "上街区", "惠济区", "巩义市", "新郑市", "新密市", "登封市", "荥阳市", "中牟县", "其他"]
+                break;
+              case 1:
+                data.multiArray[2] = ["鼓楼区", "龙亭区", "顺河回族区", "禹王台区", "金明区", "开封县", "尉氏县", "兰考县", "杞县", "通许县", "其他"]
+                break;
+              case 2:
+                data.multiArray[2] = ["西工区", "老城区", "涧西区", "瀍河回族区", "洛龙区", "吉利区", "偃师市", "孟津县", "汝阳县", "伊川县", "洛宁县", "嵩县", "宜阳县", "新安县", "栾川县", "其他"]
+                break;
+              case 3:
+                data.multiArray[2] = ["新华区", "卫东区", "湛河区", "石龙区", "汝州市", "舞钢市", "宝丰县", "叶县", "郏县", "鲁山县", "其他"]
+                break;
+              case 4:
+                data.multiArray[2] = ["北关区", "文峰区", "殷都区", "龙安区", "林州市", "安阳县", "滑县", "内黄县", "汤阴县", "其他"]
+                break;
+              case 5:
+                data.multiArray[2] = ["淇滨区", "山城区", "鹤山区", "浚县", "淇县", "其他"]
+                break;
+              case 6:
+                data.multiArray[2] = ["卫滨区", "红旗区", "凤泉区", "牧野区", "卫辉市", "辉县市", "新乡县", "获嘉县", "原阳县", "长垣县", "封丘县", "延津县", "其他"]
+                break;
+              case 7:
+                data.multiArray[2] = ["解放区", "中站区", "马村区", "山阳区", "沁阳市", "孟州市", "修武县", "温县", "武陟县", "博爱县", "其他"]
+                break;
+              case 8:
+                data.multiArray[2] = ["华龙区", "濮阳县", "南乐县", "台前县", "清丰县", "范县", "其他"]
+                break;
+              case 9:
+                data.multiArray[2] = ["魏都区", "禹州市", "长葛市", "许昌县", "鄢陵县", "襄城县", "其他"]
+                break;
+              case 10:
+                data.multiArray[2] = ["源汇区", "郾城区", "召陵区", "临颍县", "舞阳县", "其他"]
+                break;
+              case 11:
+                data.multiArray[2] = ["湖滨区", "义马市", "灵宝市", "渑池县", "卢氏县", "陕县", "其他"]
+                break;
+              case 12:
+                data.multiArray[2] = ["卧龙区", "宛城区", "邓州市", "桐柏县", "方城县", "淅川县", "镇平县", "唐河县", "南召县", "内乡县", "新野县", "社旗县", "西峡县", "其他"]
+                break;
+              case 13:
+                data.multiArray[2] = ["梁园区", "睢阳区", "永城市", "宁陵县", "虞城县", "民权县", "夏邑县", "柘城县", "睢县", "其他"]
+                break;
+              case 14:
+                data.multiArray[2] = ["浉河区", "平桥区", "潢川县", "淮滨县", "息县", "新县", "商城县", "固始县", "罗山县", "光山县", "其他"]
+                break;
+              case 15:
+                data.multiArray[2] = ["川汇区", "项城市", "商水县", "淮阳县", "太康县", "鹿邑县", "西华县", "扶沟县", "沈丘县", "郸城县", "其他"]
+                break;
+              case 16:
+                data.multiArray[2] = ["驿城区", "确山县", "新蔡县", "上蔡县", "西平县", "泌阳县", "平舆县", "汝南县", "遂平县", "正阳县", "其他"]
+                break;
+              case 17:
+                data.multiArray[2] = ["济源市", "其他"]
+                break;
+            }
+            break;
+        }
+        break;
+    }
+    this.setData(data);
+  }, -->

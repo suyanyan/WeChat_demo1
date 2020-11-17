@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/home/index",
+    "pages/template/template",
+    "utils/component/wxPop/pop_modal",
+    "pages/tab_menu/menu",
+    "pages/account/account"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#eee",
+    "navigationBarTitleText": "Su_Yan_Yan",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "black",
+    "backgroundColorTop": "#eee"
+  },
+  "tabBar": {
+    "color": "red",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "pages/image/location.png",
+        "iconPath": "pages/image/location.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "pages/image/default.png",
+        "iconPath": "pages/image/default.png",
+        "pagePath": "pages/logs/logs",
+        "text": "我的"
+      }
+    ]
+  }
+}

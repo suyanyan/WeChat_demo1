@@ -1,0 +1,21 @@
+<!-- <modal hidden="{{hidden}}" title="这里是title" confirm-text="自定义确定按钮" cancel-text="自定义取消按钮" bindcancel="cancel" bindconfirm="confirm" no-cancel="{{nocancel}}">
+    这是对话框的内容。
+</modal> -->
+<view class='model' hidden='{{!isshow}}'>
+  <view class='model_top' hidden='{{topHidden}}'>
+    <text style=''>{{titleText}}</text>
+    <view class='close' bindtap='_close'>x</view>
+  </view>
+  <view class='model_center' >
+  {{titleMsg}}
+  <input class="input_base" hidden='{{inputHidden}}' bindinput="bindKeyInput" value="{{inputValue}}" maxlength='10' auto-focus='autofocus'
+placeholder='{{inputPlaceHalder}}' />
+  </view>
+  <view class='model_bottom' hidden='{{bottomHidden}}'>
+    <button type='warn' class='model_close' bindtap='_cancle'>{{cancleText}}</button>
+    <button type='primary' class='model_yes' bindtap='_success'>{{yesText}}</button>
+  </view>
+</view>
+<view class='{{className}}' hidden='{{!msgIsshow}}'>
+{{msgInfo}}
+</view>

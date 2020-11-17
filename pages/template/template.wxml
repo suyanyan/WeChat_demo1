@@ -1,0 +1,70 @@
+<!-- 导航组件 -->
+<template name="nav">
+  <view class='nav'>
+    <block wx:for="{{navarrs.navarr}}" wx:key="{{i}}">
+      <view bindtap='jumpPage' data-router="{{item.router}}" data-index="{{index}}" class="a {{index == navIndex ? 'active' : ''}}">{{item.title}}</view>
+    </block>
+  </view>
+</template>
+
+<!-- 首页组件 -->
+<template name="index">
+   <view class='banner'>
+      <swiper class='swiper' indicator-dots="false" indicator-color="#fff" autoplay="true" interval="2000" duration="400" circular="false" vertical="false" previous-margin="0px" next-margin="0px">
+        <block wx:for="{{bannerUrl}}" wx:key="*this">
+          <swiper-item>
+            <view>
+              <image class='bannerImg' src='{{item}}'/>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+</template>
+
+<!-- 产品组件 -->
+<template name="product">
+  <view id="product">
+    <block wx:for="{{product.data}}" wx:key="*this">
+      <view class='item'>
+        <view class='left'>
+          <image class='headImg' src="../image/head.jpg"></image>
+        </view>
+        <view class='right'>
+          <view>名称：<text>{{item.name}}</text></view>
+          <view>型号：<text>{{item.type}}</text></view>
+          <view>价格：<text>{{item.many}}</text></view>
+          <icon type='cancel' size='30' class='cancel'></icon>
+          <button class='btn' type="primary" size="default">详情</button>
+        </view>
+      </view>
+    </block>
+  
+  </view>
+</template>
+
+<!-- 热销组件 -->
+<template name="sellwell">
+  <view>
+    
+  </view>
+</template>
+
+<!-- 购物车组件 -->
+<template name="car">
+
+</template>
+
+<!-- 我的组件 -->
+<template name="myself">
+  <view class='audio'>
+     <audio id="myAudio" class='audio_play' src='{{audio.src}}' loop="true" name="{{audio.name}}" poster="{{audio.poster}}" controls></audio>
+  </view>
+</template>
+
+
+
+<!-- previewImage图片预览 -->
+<template name="previewImage">
+  <image src='{{previewImageUrl}}'></image>
+</template>

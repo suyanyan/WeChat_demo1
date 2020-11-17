@@ -1,0 +1,91 @@
+<view class='content'>
+<!-- 询问框 -->
+ <my-component-dialog
+      id='model'
+      titleText='{{titleText}}'
+      titleMsg='{{titleMsg}}'
+      cancleText='{{cancleText}}'
+      yesText="{{yesText}}"
+      bind:cancle='cancle'
+      bind:success='success'
+      bind:close='close'
+      >
+  </my-component-dialog>
+  <!-- 普通提示框 -->
+  <my-component-dialog
+    id='msgInfo'
+    msgInfo="{{msgInfo}}"
+    className="{{className}}">
+  </my-component-dialog>
+  <image width='100%' height='100%' class='bj' src='http://pic.soutu123.cn/element_origin_min_pic/16/08/22/1557baa47b10856.jpg!/fw/700/quality/90/unsharp/true/compress/true'/>
+  <view class='text'>
+    <!-- <text class='font'>Sp自我介绍</text> -->
+    <import src='../template/template'/>
+    <view class='flxedNav' style='position:relation;height:50px'>
+      <template is="nav" data="{{navarrs,navIndex}}"></template>
+    </view>
+
+   <view id="content">
+   <!-- 首页 -->
+    <block wx:if="{{route == 'index'}}">
+     <template is="index" data="{{bannerUrl}}"></template>
+    </block>
+
+    <!-- 产品 -->
+    <block wx:if="{{route == 'product'}}">
+      <template is="product" data="{{product}}"></template>
+    </block>
+
+    <!-- 热销 -->
+    <block wx:if="{{route == 'sellwell'}}">
+     <button class='sellwell_btn' type='primary' bindtap='clickMe'>普通信息框</button>
+     <button class='sellwell_btn' type='primary' bindtap='clicMsgInfo'>提示框</button>
+     <button class='sellwell_btn' type='primary' bindtap='clickMe'>询问框</button>
+      <template is="sellwell"></template>
+    </block>
+
+    <!-- 购物车 -->
+    <block wx:if="{{route == 'car'}}">
+      <template is="car" data="{{map}}"></template>
+    </block>
+
+    <!-- 我的 -->
+    <block wx:if="{{route == 'myself'}}">
+      <view class='myself_top'>
+        <view class='left'>
+         <block wx:if="{{loginFlag == 'false'}}">
+            <image class="image" src='../image/default.png'/>
+          </block>
+          <block wx:if="{{loginFlag == 'true'}}">
+           <image class="image" src='{{headImg}}'/>
+          </block>
+        </view>
+        <view class='rights'>
+          <block wx:if="{{loginFlag == 'false'}}">
+            <view bindtap='login'>点击登录</view>
+          </block>
+         <block wx:if="{{loginFlag == 'true'}}">
+            <view>{{username}}</view>
+          </block>
+        </view>
+      </view>
+      <view class='myself_content'>
+        <view class='mycont_top'>
+          <ul>
+            <li>地址</li>
+            <li bindtap="userInfofn" data-userInfos="{{userInfos}}">账号信息</li>
+            <li>已购商品</li>
+            <li>收藏</li>
+            <li> <button class='btn' open-type="contact" bindcontact='contact'> 打开客服</button></li>
+            <li>浏览足迹</li>
+          </ul>
+        </view>
+        <view class='mycont_btom'>
+        
+        </view>
+      </view>
+      <!-- <template is="myself" data="{{audio}}"></template> -->
+    </block>
+   </view>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="container">
+  <image width='100%' height='100%' class='bj' src='http://pic.soutu123.cn/element_origin_min_pic/16/08/22/1557baa47b10856.jpg!/fw/700/quality/90/unsharp/true/compress/true'/>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+   <button type='' class='user-motto' size="default" style="font-size:12pt" bindtap='jumppages'>{{motto}}</button>
+   <!-- <button open-type="contact" bindcontact='contact'> 打开客服会话 </button>
+   <button open-type="share"> 分享 </button>
+   <button open-type="getPhoneNumber"> 获取电话号码 </button>
+   <button open-type="launchApp"> 打开APP </button> -->
+   
+  </view>
+</view>
